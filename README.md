@@ -25,7 +25,7 @@ Atualmente estou imerso em um **programa de Residência em Engenharia de Softwar
 ## 💼 Experiência Profissional
 
 ### 🏢 Residente em Engenharia de Software
-**UEMA / BRISA** | Jan 2025 - O momento
+**UEMA / BRISA** | Set 2025 - O momento
 
 - Integrando o programa de Residência em TIC para capacitação avançada
 - Desenvolvendo soluções em um ecossistema de inovação
@@ -256,4 +256,5 @@ Se você encontrar algum bug ou tiver sugestões de melhorias, sinta-se à vonta
 **Desenvolvido com ❤️ por [André Lima](https://github.com/andrelima-dev)**
 
 *Última atualização: 15 de outubro de 2025*
+
 
