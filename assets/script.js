@@ -1,4 +1,6 @@
-// Navegação suave
+// ============================================
+// NAVEGAÇÃO SUAVE COM EFEITOS AVANÇADOS
+// ============================================
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
@@ -11,13 +13,33 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Highlight da navegação ativa
+// ============================================
+// HEADER SCROLL EFFECT (ESTILO APPLE)
+// ============================================
+let lastScroll = 0;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// ============================================
+// NAVEGAÇÃO ATIVA COM TRANSIÇÕES SUAVES
+// ============================================
 function updateActiveNav() {
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
   
   let current = '';
-  const scrollPos = window.scrollY + 100;
+  const scrollPos = window.scrollY + 150;
   
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
@@ -39,94 +61,220 @@ function updateActiveNav() {
 window.addEventListener('scroll', updateActiveNav);
 window.addEventListener('load', updateActiveNav);
 
-// Animação de entrada nas seções
+// ============================================
+// SCROLL REVEAL COM EFEITOS CINEMATOGRÁFICOS
+// ============================================
 const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -100px 0px'
+  threshold: 0.1,
+  rootMargin: '0px 0px -80px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('fade-in-visible');
+      // Adiciona delay progressivo para criar efeito cascata
+      setTimeout(() => {
+        entry.target.classList.add('fade-in-visible');
+      }, index * 100);
     }
   });
 }, observerOptions);
 
-// Aplica animação aos cards e elementos
-document.querySelectorAll('.project-card, .timeline-item, .skill-category, .cert-item').forEach(el => {
+// Aplica animação aos elementos com delays diferenciados
+document.querySelectorAll('.project-card, .timeline-item, .skill-category, .cert-item').forEach((el, index) => {
   el.classList.add('fade-in-element');
+  el.style.transitionDelay = `${index * 0.05}s`;
   observer.observe(el);
 });
 
-// Efeito parallax sutil no hero (apenas no hero, não afeta outros elementos)
+// ============================================
+// PARALLAX AVANÇADO NO HERO (ESTILO APPLE)
+// ============================================
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const hero = document.querySelector('.hero');
-  
-  if (hero && scrolled < window.innerHeight) {
-    // Aplicar o parallax apenas ao conteúdo, não à seção inteira
-    const heroContent = hero.querySelector('.hero-content');
-    if (heroContent) {
-      heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      
+      if (hero && scrolled < window.innerHeight) {
+        const heroContent = hero.querySelector('.hero-content');
+        if (heroContent) {
+          // Parallax suave com aceleração
+          const parallaxValue = scrolled * 0.5;
+          const opacity = 1 - (scrolled / window.innerHeight) * 0.8;
+          const scale = 1 - (scrolled / window.innerHeight) * 0.1;
+          
+          heroContent.style.transform = `translateY(${parallaxValue}px) scale(${scale})`;
+          heroContent.style.opacity = opacity;
+        }
+      }
+      
+      ticking = false;
+    });
+    
+    ticking = true;
   }
 });
 
-// Efeito de hover smooth nos cards
+// ============================================
+// MOUSE TRACKING 3D NOS CARDS (ESTILO APPLE)
+// ============================================
 document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mouseenter', function() {
-    this.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  card.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    
+    this.style.transform = `
+      perspective(1000px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      translateY(-12px)
+      scale3d(1.02, 1.02, 1.02)
+    `;
   });
   
   card.addEventListener('mouseleave', function() {
-    this.style.transition = 'all 0.4s ease';
+    this.style.transform = '';
   });
 });
 
-// Adicionar classe de animação aos elementos quando carrega a página
+// ============================================
+// ANIMAÇÃO DE ENTRADA PROGRESSIVA
+// ============================================
 window.addEventListener('load', () => {
-  document.querySelectorAll('.project-card, .skill-category').forEach((el, index) => {
-    el.style.animationDelay = `${index * 0.1}s`;
+  document.querySelectorAll('.project-card, .skill-category, .cert-item').forEach((el, index) => {
+    el.style.animationDelay = `${index * 0.08}s`;
+  });
+  
+  // Animação especial para o hero
+  const heroElements = document.querySelectorAll('.hero h1, .hero h2, .impact, .hero-links');
+  heroElements.forEach((el, index) => {
+    el.style.animationDelay = `${index * 0.15}s`;
   });
 });
 
-// Efeito de mouse tracking no hero para interatividade
+// ============================================
+// MOUSE TRACKING 3D NO HERO (ULTRA SUAVE)
+// ============================================
 const hero = document.querySelector('.hero');
 const heroContent = document.querySelector('.hero-content');
 
 if (hero && heroContent) {
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  
   document.addEventListener('mousemove', (e) => {
     if (window.scrollY < window.innerHeight) {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      mouseX = (e.clientX / window.innerWidth - 0.5);
+      mouseY = (e.clientY / window.innerHeight - 0.5);
+    }
+  });
+  
+  // Animação suave usando requestAnimationFrame
+  function animate() {
+    if (window.scrollY < window.innerHeight) {
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+      
+      const scrolled = window.pageYOffset;
+      const parallaxValue = scrolled * 0.5;
+      const opacity = 1 - (scrolled / window.innerHeight) * 0.8;
+      const scale = 1 - (scrolled / window.innerHeight) * 0.1;
       
       heroContent.style.transform = `
         perspective(1000px)
-        rotateX(${y * 2}deg)
-        rotateY(${-x * 2}deg)
-        translateY(${window.scrollY * 0.3}px)
+        rotateX(${targetY * 3}deg)
+        rotateY(${-targetX * 3}deg)
+        translateY(${parallaxValue}px)
+        scale(${scale})
       `;
+      heroContent.style.opacity = opacity;
     }
-  });
-
-  document.addEventListener('mouseleave', () => {
-    heroContent.style.transform = `
-      perspective(1000px)
-      rotateX(0)
-      rotateY(0)
-      translateY(${window.scrollY * 0.3}px)
-    `;
-  });
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
 }
 
-// Efeito de glow nos social links
+// ============================================
+// PARTÍCULAS FLUTUANTES NO HERO (OPCIONAL)
+// ============================================
+function createParticles() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  
+  const particleCount = 30;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.cssText = `
+      position: absolute;
+      width: ${Math.random() * 4 + 1}px;
+      height: ${Math.random() * 4 + 1}px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.8), transparent);
+      border-radius: 50%;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      pointer-events: none;
+      animation: float ${Math.random() * 10 + 10}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      opacity: ${Math.random() * 0.5 + 0.2};
+      filter: blur(1px);
+    `;
+    hero.appendChild(particle);
+  }
+}
+
+// Ativar partículas (comente a linha abaixo se não quiser o efeito)
+// createParticles();
+
+// ============================================
+// EFEITOS AVANÇADOS NOS SOCIAL LINKS
+// ============================================
 document.querySelectorAll('.social-link').forEach(link => {
   link.addEventListener('mouseenter', function() {
-    this.style.filter = 'brightness(1.2)';
+    // Cria efeito ripple
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.4), transparent);
+      border-radius: 50%;
+      animation: ripple 0.6s ease-out;
+      pointer-events: none;
+    `;
+    this.appendChild(ripple);
+    
+    setTimeout(() => ripple.remove(), 600);
   });
+});
+
+// ============================================
+// SMOOTH SCROLL PARA SEÇÕES
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Adiciona classe para identificar quando a página está carregada
+  document.body.classList.add('loaded');
   
-  link.addEventListener('mouseleave', function() {
-    this.style.filter = 'brightness(1)';
-  });
+  // Performance: reduz motion em dispositivos que preferem
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('*').forEach(el => {
+      el.style.animation = 'none';
+      el.style.transition = 'none';
+    });
+  }
 });
