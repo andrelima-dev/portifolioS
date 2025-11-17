@@ -1,6 +1,6 @@
 ﻿# 🚀 Portfólio de André Lima
 
-> Engenheiro de Software Full-Stack | Desenvolvedor Web & Desktop |  Código Limpo
+>  Desenvolvedor Web & Desktop 
 
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andré-lima-7822042a5/)
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/andrelima-dev)
@@ -11,7 +11,7 @@
 
 ## 👋 Sobre Mim
 
-Sou um **Engenheiro de Software Full-Stack** com experiência em desenvolvimento web e desktop. Minha paixão é transformar ideias em soluções digitais eficientes, aplicando sempre as melhores práticas de programação e metodologias ágeis.
+Sou um **Dessenvolvedor de software** com experiência em desenvolvimento web e desktop. Minha paixão é transformar ideias em soluções digitais eficientes, aplicando sempre as melhores práticas de programação e metodologias ágeis.
 
 Atualmente estou imerso em um **programa de Residência em Engenharia de Software** pela UEMA em parceria com a BRISA
 ### 🎯 O que me motiva:
@@ -256,6 +256,7 @@ Se você encontrar algum bug ou tiver sugestões de melhorias, sinta-se à vonta
 **Desenvolvido com ❤️ por [André Lima](https://github.com/andrelima-dev)**
 
 *Última atualização: 15 de outubro de 2025*
+
 
 
 
