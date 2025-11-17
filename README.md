@@ -1,6 +1,6 @@
 ﻿# 🚀 Portfólio de André Lima
 
-> Engenheiro de Software Full-Stack | Desenvolvedor Web & Desktop | Apaixonado por Código Limpo
+> Engenheiro de Software Full-Stack | Desenvolvedor Web & Desktop |  Código Limpo
 
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andré-lima-7822042a5/)
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/andrelima-dev)
@@ -256,5 +256,6 @@ Se você encontrar algum bug ou tiver sugestões de melhorias, sinta-se à vonta
 **Desenvolvido com ❤️ por [André Lima](https://github.com/andrelima-dev)**
 
 *Última atualização: 15 de outubro de 2025*
+
 
 
